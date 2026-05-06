@@ -1,0 +1,21 @@
+.text-white {
+    color: white;
+}
+
+.price-card-1 p,
+.price-card-1 h2,
+.price-card-1 ul,
+.price-card-1 li,
+.price-card-1 h5 {
+    color: white;
+}
+
+
+.hidden {
+    display: none !important;
+  }
+  
+  .visible {
+    display: flex !important;
+  }
+

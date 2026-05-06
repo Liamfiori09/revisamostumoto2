@@ -1,0 +1,283 @@
+/* CSS Ajustado */
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: flex !important;
+}
+
+.custom-img-width {
+  max-width: 250px;
+  width: 100%;
+}
+
+.hero-section {
+  position: relative;
+  /* El contenedor padre debe tener posición relativa */
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  /* Evita que el wave se salga del contenedor */
+}
+
+
+.hero-background {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Centra el contenido horizontal y verticalmente */
+}
+
+.hero-image-container {
+  position: relative;
+  height: 100%;
+  padding-bottom: 60px;
+  /* Mantiene el espacio entre la imagen y el wave */
+}
+
+.hero-image-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  /* Hace la imagen más grande */
+  max-width: none;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+}
+
+.wave {
+  width: 200vw;
+  /* Hace que sea más ancho que la pantalla */
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  z-index: 0;
+}
+
+.position-absolute.bottom-0 {
+  position: static;
+  /* Asegura que el wave se posicione dentro del flujo normal */
+}
+
+@media (max-width: 768px) {
+  .hero-image-container {
+    height: auto;
+    padding-bottom: 40px;
+    /* Ajusta este valor para pantallas más pequeñas */
+  }
+
+  .hero-image-wrapper {
+    position: relative;
+    width: 120%;
+    left: 0;
+    transform: none;
+  }
+
+  .hero-image {
+    width: 150%;
+    height: auto;
+  }
+
+  .img-fluid-hero {
+    max-width: 150%;
+    height: auto;
+    transform: translate(-100px, 0px);
+  }
+  
+  .wave {
+    /* height: 200px; */
+    /* width: 100vw; */
+    width: 350% !important ;
+    
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1600px) {
+  .hero-image-container {
+    height: auto;
+    padding-bottom: 0px;
+  }
+
+  .hero-image-wrapper {
+    position: relative;
+    left: 0;
+    max-width: none;
+    transform: none;
+  }
+
+  .hero-image {
+    width: 150%;
+    height: auto;
+  }
+
+  .img-fluid-hero {
+    max-width: 150%;
+    height: auto;
+    transform: translate(-100px, 0px);
+  }
+
+
+}
+
+@media (min-width: 1600px) {
+  .wave {
+    bottom: -100px;
+    /* Baja un poco la onda */
+  }
+
+  .hero-image-container {
+    height: auto;
+    padding-bottom: 0px;
+  }
+
+  .hero-image-wrapper {
+    position: relative;
+    left: 0;
+    max-width: none;
+    transform: none;
+  }
+
+  .hero-image {
+    width: 150%;
+    height: auto;
+  }
+
+  .img-fluid {
+    max-width: 150%;
+    height: auto;
+  }
+}
+
+.larger-img {
+  max-width: 100%;
+  height: auto;
+  max-height: 150px;
+  /* Ajusta este valor según sea necesario */
+}
+
+
+.instagram-section {
+  padding: 40px 0;
+  background-color: #f8f8f8;
+}
+
+.section-title {
+  text-align: center;
+  margin: 0 0 30px;
+  font-size: 24px;
+  color: #333;
+}
+
+.instagram-carousel-container {
+  padding: 20px 0;
+  background-color: #fff;
+}
+
+.swiper {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  height: auto;
+}
+
+.instagram-embed {
+  width: 100%;
+  max-width: 320px;
+}
+
+.swiper-button-next, .swiper-button-prev {
+  color: #262626;
+}
+
+.swiper-pagination-bullet-active {
+  background: #262626;
+}
+
+@media (max-width: 768px) {
+  .swiper {
+      width: 95%;
+  }
+}
+
+/* Estilos del carousel de Instagram actualizados */
+#instagramReelsCarousel {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.carousel-inner {
+    padding: 0 15%;
+}
+
+.carousel-item {
+    text-align: center;
+    transition: transform 0.6s ease-in-out;
+}
+
+.instagram-embed-clickable {
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.carousel-item:not(.active) .instagram-embed-clickable {
+    pointer-events: auto;
+}
+
+.carousel-item .instagram-media {
+    margin: 0 auto !important;
+    min-width: 0 !important;
+    max-width: 400px !important;
+    pointer-events: none; /* Solo en items inactivos */
+}
+
+.carousel-item.active .instagram-media {
+    pointer-events: auto; /* Permite interacción en el item activo */
+}
+
+.carousel-item:not(.active) {
+    opacity: 0.5;
+    transform: scale(0.8);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 15%;
+    opacity: 0.8;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .carousel-inner {
+        padding: 0 10%;
+    }
+
+    .carousel-item .instagram-media {
+        max-width: 300px !important;
+    }
+
+    .instagram-embed-clickable {
+        touch-action: manipulation; /* Mejora la respuesta táctil en móviles */
+    }
+}
