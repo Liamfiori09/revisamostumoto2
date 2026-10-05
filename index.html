@@ -339,15 +339,17 @@
             <div class="row justify-content-center">
               <div class="col-md-8 col-lg-7">
                 <h3 class="fs-4 fs-lg-3 fw-bold text-center mb-2 mb-lg-x1 lh-sm">Nuestra tarifa</h3>
-                <p class="fs-8 mb-4 mb-lg-4 text-center lh-lg fw-normal">Un único plan para revisar tu futura moto.</p>
+                <p class="fs-8 mb-4 mb-lg-4 text-center lh-lg fw-normal">Un único plan para revisar tu futura moto, esta semana en oferta.</p>
               </div>
               <div class="col-12">
                 <div class="d-flex flex-column flex-md-row justify-content-center align-items-center align-items-md-start gap-2">
 
                   <!-- PLAN ÚNICO -->
                   <div class="p-3 text-center bg-white border shadow-sm rounded-2 pricing-card">
-                    <p class="fs-11 text-uppercase mb-2 fw-bold text-primary ls-2">Revisión completa</p>
-                    <h2 class="mb-2"><span class="fs-3 fs-md-2 fw-bold">199</span><span class="fs-7 fs-md-8 fw-bold">€</span></h2>
+                    <p class="fs-11 text-uppercase mb-2 fw-bold text-primary ls-2">Revisión completa <sup class="text-danger fw-bold">¡OFERTA!</sup></p>
+                    <p class="fs-8 mb-0 text-muted">Antes <span class="text-decoration-line-through">240€</span></p>
+                    <h2 class="mb-1"><span class="fs-3 fs-md-2 fw-bold">199</span><span class="fs-7 fs-md-8 fw-bold">€</span></h2>
+                    <p class="fs-9 fw-bold text-danger mb-2">Oferta solo esta semana</p>
                     <ul class="list-unstyled fs-9 lh-lg fw-light text-1100 ls-1">
                       <li class="py-x1 px-1 border-top">
                         <h5 class="fs-9 lh-lg mb-1">Revisión general</h5>
@@ -548,13 +550,13 @@
               <div class="col-lg-6">
                 <div class="row justify-content-center">
                   <div class="col-10 col-lg-12">
-                    <!-- Formulario de reserva / contacto: llega por correo vía Web3Forms -->
-                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-                      <!-- PEGA AQUÍ la access key que te envía web3forms.com al correo revisamostumoto@gmail.com -->
-                      <input type="hidden" name="access_key" value="PEGA_AQUI_TU_ACCESS_KEY">
-                      <input type="hidden" name="subject" value="Nueva solicitud desde revisamostumoto.es">
-                      <input type="hidden" name="from_name" value="Web revisamostumoto.es">
-                      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+                    <!-- Formulario de reserva / contacto: llega por correo vía FormSubmit (sin registro ni clave).
+                         Para cambiar el correo de destino, cambia la dirección del final de "action". -->
+                    <form id="contactForm" action="https://formsubmit.co/ajax/revisamostumoto@gmail.com" method="POST">
+                      <input type="hidden" name="_subject" value="Nueva solicitud desde revisamostumoto.es">
+                      <input type="hidden" name="_template" value="table">
+                      <input type="hidden" name="_captcha" value="false">
+                      <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
 
                       <div class="mb-2 w-100">
                         <select class="form-control email-input" id="motivo" name="motivo" aria-label="Motivo">
@@ -693,7 +695,8 @@
         })
           .then(function (response) {
             return response.json().then(function (json) {
-              if (!response.ok || !json.success) throw new Error(json.message || 'Error');
+              var ok = json.success === true || json.success === 'true';
+              if (!response.ok || !ok) throw new Error(json.message || 'Error');
             });
           })
           .then(function () {
@@ -703,7 +706,12 @@
             if (typeof fbq === 'function') fbq('track', 'Lead');
             if (typeof gtag === 'function') gtag('event', 'generate_lead');
           })
-          .catch(function () {
+          .catch(function (err) {
+            // El primer envío no llega: FormSubmit manda antes un correo de activación
+            if (/activat/i.test(String(err && err.message))) {
+              notify('Falta activar el formulario', 'Formulario pendiente de activar: abre el correo que FormSubmit ha enviado a revisamostumoto@gmail.com y pulsa el enlace de activación.', false);
+              return;
+            }
             notify('No se ha podido enviar', 'No hemos podido enviar el formulario. Escríbenos directamente a revisamostumoto@gmail.com.', false);
           })
           .then(function () {
