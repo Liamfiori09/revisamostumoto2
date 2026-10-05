@@ -345,11 +345,16 @@
                 <div class="d-flex flex-column flex-md-row justify-content-center align-items-center align-items-md-start gap-2">
 
                   <!-- PLAN ÚNICO -->
-                  <div class="p-3 text-center bg-white border shadow-sm rounded-2 pricing-card">
-                    <p class="fs-11 text-uppercase mb-2 fw-bold text-primary ls-2">Revisión completa <sup class="text-danger fw-bold">¡OFERTA!</sup></p>
-                    <p class="fs-8 mb-0 text-muted">Antes <span class="text-decoration-line-through">240€</span></p>
+                  <div class="p-3 text-center bg-white border shadow-sm rounded-2 pricing-card" style="border: 2px solid var(--bs-danger, #dc3545) !important;">
+                    <!-- OFERTA: para quitarla, borra desde aquí hasta "FIN OFERTA" y el style="border..." de la línea de arriba -->
+                    <div class="mb-3">
+                      <span style="display: inline-block; background: var(--bs-danger, #dc3545); color: #fff; font-weight: 700; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; padding: .45rem 1.1rem; border-radius: 999px;">🔥 Oferta solo esta semana</span>
+                    </div>
+                    <!-- FIN OFERTA -->
+                    <p class="fs-11 text-uppercase mb-2 fw-bold text-primary ls-2">Revisión completa</p>
+                    <p class="mb-0" style="font-size: 1.35rem; line-height: 1.2; color: #8a8f98;">Antes <span style="text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: var(--bs-danger, #dc3545);">240€</span></p>
                     <h2 class="mb-1"><span class="fs-3 fs-md-2 fw-bold">199</span><span class="fs-7 fs-md-8 fw-bold">€</span></h2>
-                    <p class="fs-9 fw-bold text-danger mb-2">Oferta solo esta semana</p>
+                    <p class="mb-3"><span style="display: inline-block; background: rgba(220, 53, 69, .12); color: var(--bs-danger, #dc3545); font-weight: 700; font-size: .9rem; padding: .3rem .8rem; border-radius: 6px;">Te ahorras 41€</span></p>
                     <ul class="list-unstyled fs-9 lh-lg fw-light text-1100 ls-1">
                       <li class="py-x1 px-1 border-top">
                         <h5 class="fs-9 lh-lg mb-1">Revisión general</h5>
@@ -362,11 +367,12 @@
                       </li>
                       <li class="py-x1 px-1 border-top"><h5 class="fs-9 lh-lg mb-1">Desplazamiento incluido hasta 40 km a la redonda de Barcelona capital (si la moto está más lejos, escríbenos y te daremos un presupuesto al momento)</h5></li>
                       <li class="py-x1 px-1 border-top"><h5 class="fs-9 lh-lg mb-1">Informe detallado CARFAX/DGT</h5></li>
+                      <li class="py-x1 px-1 border-top"><h5 class="fs-9 lh-lg mb-1">Duración de la revisión: 1 hora aproximadamente</h5></li>
                       <li class="py-x1 px-1 border-top"><h5 class="fs-9 lh-lg mb-1">Informe de Revisión en menos de 24h</h5></li>
                       <li class="py-x1 px-1 border-top"><h5 class="fs-9 lh-lg mb-1">Garantía Mecánica Opcional</h5></li>
                       <li class="py-x1 px-1 border-top"><h5 class="fs-9 lh-lg mb-1">Transporte de moto opcional</h5></li>
                       <li class="mt-1 d-grid">
-                        <a class="btn btn-primary btn-sm lh-lg" href="#contact">Reservar revisión</a>
+                        <a class="btn btn-primary btn-sm lh-lg" href="#contact">Reservar por 199€</a>
                       </li>
                     </ul>
                   </div>
@@ -450,7 +456,7 @@
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="heading3"><button class="accordion-button fs-8 lh-lg fw-bold pt-x1 pb-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expand="false" aria-controls="collapse3" data-accordion-button="data-accordion-button">¿Cuánto tiempo tarda la revisión?</button></h2>
                     <div class="accordion-collapse collapse" id="collapse3" data-bs-parent="#accordion">
-                      <div class="accordion-body lh-xl pt-0 pb-x1">La revisión tendrá una duración de 1 hora.</div>
+                      <div class="accordion-body lh-xl pt-0 pb-x1">La revisión dura 1 hora aproximadamente.</div>
                     </div>
                   </div>
                   <div class="accordion-item">
@@ -616,12 +622,7 @@
         <div class="container">
           <div class="row gy-2 py-5 justify-content-center text-center">
             <div class="col-12">
-              <div class="d-flex justify-content-center gap-3">
-                <a class="ls-1 lh-xl" href="politica_cookies.html">Política de cookies</a>
-                <a class="ls-1 lh-xl" href="aviso_legal.html">Aviso legal</a>
-                <a class="ls-1 lh-xl" href="terminos_y_condiciones.html">Términos y Condiciones</a>
-              </div>
-              <p class="text-center lh-xl text-1100 mt-3">© 2024 Copyright, All Right Reserved, <a class="fw-semi-bold" href="https://revisamostumoto.es/">revisamostumoto.es</a></p>
+              <p class="text-center lh-xl text-1100 mb-0">© 2024 Copyright, All Right Reserved, <a class="fw-semi-bold" href="https://revisamostumoto.es/">revisamostumoto.es</a></p>
             </div>
           </div>
         </div>
